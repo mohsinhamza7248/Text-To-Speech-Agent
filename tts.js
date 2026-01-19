@@ -64,7 +64,7 @@ export async function generateAudio(text, index) {
                 const stream = error.response.data;
                 let errorData = '';
                 stream.on('data', chunk => errorData += chunk);
-                stream.on('end', () => console.error('Response data:', errorData));
+
             } catch (e) {
                 console.error('Could not read error stream.');
             }
