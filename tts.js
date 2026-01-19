@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
-const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM'; // Default voice (Rachel)
+const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
 
 export async function generateAudio(text, index) {
     try {
@@ -60,7 +60,6 @@ export async function generateAudio(text, index) {
     } catch (error) {
         console.error(`Error generating audio for product ${index}:`, error.message);
         if (error.response && error.response.data) {
-            // Since responseType is stream, we need to read the stream to get the error message
             try {
                 const stream = error.response.data;
                 let errorData = '';

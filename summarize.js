@@ -33,7 +33,6 @@ export async function summarizeProduct(description) {
 
     } catch (error) {
         console.error('Error during summarization:', error.message);
-        // Return original description or error message on failure to allow flow to continue
         return "Summary generation failed.";
     }
 }

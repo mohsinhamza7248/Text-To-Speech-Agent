@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function main() {
-    console.log('--- Starting Backend Assessment Script ---');
+    console.log('Start Backend ');
 
     try {
         // Step 1: Scrape
-        console.log('\n[Step 1/4] Scraping products...');
+        console.log('\n[Step 1/4] Scraping products.');
         const products = await scrapeProducts();
 
         if (products.length === 0) {
@@ -21,7 +21,7 @@ async function main() {
         }
 
         // Step 2: Store Data
-        console.log('\n[Step 2/4] Saving raw data...');
+        console.log('\n[Step 2/4] Saving raw data.');
         const dataDir = path.join(__dirname, 'data');
         if (!fs.existsSync(dataDir)) {
             fs.mkdirSync(dataDir);
@@ -30,7 +30,7 @@ async function main() {
         console.log('Data saved to data/products.json');
 
         // Step 3 & 4: Summarize and Text to Speech
-        console.log('\n[Step 3/4 & 4/4] Summarizing and Generating Audio...');
+        console.log('\n[Step 3/4 & 4/4] Summarizing and Generating Audio');
 
         for (let i = 0; i < products.length; i++) {
             const product = products[i];
@@ -39,13 +39,13 @@ async function main() {
             console.log(`\nProcessing Product ${index}: ${product.name}`);
 
             // Summarize
-            console.log(`  - Generating summary...`);
+            console.log(`Generating summary`);
             const summary = await summarizeProduct(product.description);
-            console.log(`  - Summary: ${summary}`);
+            console.log(`Summary: ${summary}`);
 
             product.summary = summary;
 
-            console.log(`  - Generating audio...`);
+            console.log(`Generating audio`);
             await generateAudio(summary, index);
         }
 
@@ -53,10 +53,10 @@ async function main() {
         fs.writeFileSync(path.join(dataDir, 'products_with_summaries.json'), JSON.stringify(products, null, 2));
         console.log('\nUpdated data saved to data/products_with_summaries.json');
 
-        console.log('\n--- Execution Completed Successfully ---');
+        console.log('\n --Execution Completed Successfully');
 
     } catch (error) {
-        console.error('\n!!! Execution Failed !!!');
+        console.error('\n --Execution Failed');
         console.error(error);
         process.exit(1);
     }
