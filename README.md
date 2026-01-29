@@ -68,7 +68,7 @@ The script scrapes: **[https://www.getmymettle.com](https://www.getmymettle.com)
 ## Design Choices
 
 ### 1. Puppeteer for Browser Automation
-Unlike static HTML scrapers (Cheerio + Axios), this implementation uses **Puppeteer** to launch a real headless browser.
+ **Puppeteer** to launch a real headless browser.
 
 **Reasoning**:
 - GetMyMettle is a Shopify-based site with JavaScript-rendered content that won't be accessible via simple HTTP requests.
