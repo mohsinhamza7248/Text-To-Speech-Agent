@@ -17,14 +17,14 @@ export async function summarizeProduct(description) {
             messages: [
                 {
                     role: "system",
-                    content: "You are a helpful assistant that summarizes book descriptions."
+                    content: "You are a helpful assistant that summarizes fitness and nutrition product descriptions. Focus on key benefits, main ingredients, and intended use."
                 },
                 {
                     role: "user",
-                    content: `Summarize this book description into exactly 1-2 sentences. Do not include any introductory text like 'Here is a summary':\n\n${description}`
+                    content: `Summarize this fitness/nutrition product description into exactly 2-3 sentences. Highlight the main benefits and key features. Do not include any introductory text like 'Here is a summary':\n\n${description}`
                 }
             ],
-            max_tokens: 100,
+            max_tokens: 150,
             temperature: 0.7,
         });
 
